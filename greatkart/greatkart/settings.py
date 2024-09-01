@@ -75,6 +75,11 @@ TEMPLATES = [
         },
     },
 ]
+AUTHENTICATION_BACKENDS = [
+    'accounts.auth_backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
+
 
 WSGI_APPLICATION = 'greatkart.wsgi.application'
 
@@ -136,7 +141,22 @@ STATICFILES_DIRS=[
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR/'media'
 
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#smtp configration
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT = 587  # Common ports are 587 for TLS, 465 for SSL, or 25 for non-secure
+EMAIL_USE_TLS = True  # Use TLS for secure communication
+#EMAIL_USE_SSL = False  # If using SSL, set this to True and EMAIL_PORT to 465
+EMAIL_HOST_USER = 'krishnatechx@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'hsal nimu plaa jarc'  # Your email account password
